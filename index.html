@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <title>Products</title>
+
+    <style>
+        input{
+            padding: 0px 0px; line-height: 170%;
+        }
+        select{
+            padding: 0px 0px; height: 170%;
+        }
+        body{
+            font-size: 15px;
+        }
+
+        #caret1{border-top:6px solid #E01919; position: relative; left: 25%;}
+        #caret2{border-top:6px solid #E01919; position: relative; left: 34%;}
+		
+		.dropdown-menu{width:100%;}
+
+    </style>
+	
+	<script>
+		function klikinput(x,y){
+			$("#" + x).val(y);
+			$("#" + x + "button").html(y');
+		}
+	</script>
+</head>
+<body background="crossword.png" style="font-family:Bitter;">
+<div class="col-md-12">
+    <div class="col-md-3 container" style="height: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: #1A4780;
+    padding-top: 60px;
+	margin-right:0px;">
+		<div class="col-md-1 margincolumn"></div> 
+        <div class="col-md-10">
+            <h4 style="color: white"><b><span class="glyphicon glyphicon-shopping-cart"></span> Order Here</b></h4><br>
+            <form method="post" action="MS_order.php">
+                <div class="dropdown">
+                    <button id="productbutton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                    style="background-color: white; color: #1A4780; width: 100%; border-radius: 3px;"
+                    >Product<span id="caret1" class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('product','Darnil')">Darnil</a></li>
+                    </ul>
+                </div>
+				<input type="hidden" id="product" value="" name="product" required>
+				<input type="hidden" id="size" value="" name="size" required>
+				
+                <div class="dropdown">
+                    <button id="sizebutton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                        style="background-color: white; color: #1A4780; margin-top: 30%; width: 100%;border-radius: 3px">
+							Size
+								<span id="caret2" class="caret"></span>
+							</button>
+                    <ul class="dropdown-menu">
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('size','2 liter')">2 liter</a></li>
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('size','25 kilogram')">25 kilogram</a></li>
+                        <li><a style="color: #E01919;" href="#"onclick="klikinput('size','1000 kilogram')">1000 kilogram</a></li>
+                    </ul>
+                </div>
+				<div class="col-md-1 margincolumn"></div> 
+
+                <br><br>
+                <label style="color: white; margin-top: 35%" >Quantity:</label><br>
+                <input type="number" class="col-md-11" name="quantity" min="1" value="0" style="border-radius: 3px;
+                width: 100%"><br><br>
+                <input type="submit" class="col-md-11" value="Submit" style="border-radius: 3px;
+                width: 100%; margin-top: 10%; background-color: white">
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="topnav col-md-11 jumbotron" style="margin-top: -1%;margin-left: 14%; position: fixed; height: 100px;
+     z-index:0;border-style:solid;border-color:#c6c6a8;border-width:1px;background-image:url('crossword.png');padding-bottom:60px;" >
+        <img class="col-md-4" style="margin-top: -30px;" src="Paypal-Logo-Transparent-png-format-large-size.png">
+    </div>
+
+</div>
+
+
+<!--Image slider-->
+
+
+<div class="col-md-12 container" style="margin-top: 2%; z-index: -1">
+
+    <div class="col-md-2 col-sm-2 container" >
+    </div>
+    <div class="col-md-4" style="margin-top: 10%; position: relative; left: 40px">
+		<div class="col-md-1 margincolumn"></div> 
+		<div class="imagebox col-10-md">
+			<img class="mySlides" src="darnil1.jpeg" style="width:75%; height:75%">
+			<img class="mySlides" src="darnil2.jpeg" style="width:75%; height:75%">
+			<div class="col-md-8" style="padding-left: 29%; padding-top: 5%">
+				<button class="glyphicon glyphicon-chevron-left"  style=""onclick="plusDivs(-1)"></button>
+				<button class="glyphicon glyphicon-chevron-right" onclick="plusDivs(1)"></button>
+			</div>
+		</div>
+		<div class="col-md-1 margincolumn"></div> 
+		
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+        }
+    </script>
+
+
+    <!--Specifications tab-->
+
+
+    <div class="col-md-6" style="margin-top: 10%">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a style="color: #1A4780" data-toggle="tab" href="#general">General information</a></li>
+            <li><a style="color: #1A4780" data-toggle="tab" href="#specifications">Product specifications</a></li>
+            <li><a style="color: #1A4780" data-toggle="tab" href="#hazard">Hazard information</a></li>
+            <li><a style="color: #1A4780" data-toggle="tab" href="#delivery">Delivery information</a></li>
+            <li><a style="color: #1A4780" data-toggle="tab" href="#contact">Contact information</a></li>
+        </ul>
+
+        <div class="tab-content" style="border: thin solid lightgrey; padding: 2%" align="center">
+            <div id="general" class="tab-pane fade in active">
+                <h3>GENERAL <span class="glyphicon glyphicon-info-sign"></span> </h3>
+                <p>This is some general information over the product.</p>
+            </div>
+            <div id="specifications" class="tab-pane fade">
+                <h3>SPECIFICATIONS <span class="glyphicon glyphicon-asterisk"></span> </h3>
+                <p>Those are some specifications over the product.</p>
+            </div>
+            <div id="hazard" class="tab-pane fade">
+                <h3>HAZARD INFORMATION <span class="glyphicon glyphicon-alert"></span></h3>
+                <p>This is some hazard information over the product</p>
+            </div>
+            <div id="delivery" class="tab-pane fade">
+                <h3>DELIVERY INFORMATION <span class="glyphicon glyphicon-send"></span> </h3>
+                <p>This is some delivery information over the product.</p>
+            </div>
+            <div id="contact" class="tab-pane fade">
+                <h3>CONTACT INFORMATION <span class="glyphicon glyphicon-envelope"></span> </h3>
+                <p>This is the contact information for the company.</p>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+</div>
+</body>
+</html>
