@@ -441,8 +441,8 @@
         <input id="E-mail address" type="email" class="reqinput step2" name="email" placeholder="john@jackson.com"><br><br>
 
         <!-- Buttons -->
-        <input type="button" class="reqinput" name="Previous" class="previous action-button" value="Previous" />
-        <input type="button" class="reqinput" name="Next" class="next action-button" value="Next" />
+        <input type="button" name="Previous" class="previous action-button" value="Previous" />
+        <input type="button" name="Next" class="next action-button" value="Next" />
 
     </fieldset>
     <fieldset>
