@@ -57,10 +57,13 @@
             color: #1A4780; 
             width: 100%; 
             border-radius: 3px;
+            margin-bottom:0px;
+            margin-top:0px;
         }
             
         .inpt{
             margin-top:5%;
+            margin-bottom:0px;
             text-align: center;
         }
 
@@ -79,20 +82,19 @@
 		<div class="col-md-1 col-sm-1 margincolumn"></div> 
         <div class="col-md-10 col-sm-10">
             <h4 style="color: white"><b><span class="glyphicon glyphicon-shopping-cart"></span> Order Here</b></h4><br>
-            <form method="post" action="MS_order.php">
+            <form method="post" class="form-group" action="MS_order.php">
                 <div class="dropdown">
-                    <button id="productbutton" class="btn btn-primary dropdown-toggle inpt" type="button" data-toggle="dropdown">
+                    <button id="productbutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
                         Product
                     <span id="caret1" class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a style="color: #E01919;" href="#" onclick="klikinput('product','Darnil')">Darnil</a></li>
                     </ul>
                 </div>
-				<input type="hidden" id="product" value="" name="product" required>
-				<input type="hidden" id="size" value="" name="size" required>
+                <input type="hidden" id="product" value="" name="product"  required>
 				
                 <div class="dropdown">
-                    <button id="sizebutton" class="btn btn-primary dropdown-toggle inpt" type="button" data-toggle="dropdown">
+                    <button id="sizebutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
 							Size
 								<span id="caret2" class="caret"></span>
 							</button>
@@ -102,13 +104,14 @@
                         <li><a style="color: #E01919;" href="#"onclick="klikinput('size','1000 kilogram')">1000 kilogram</a></li>
                     </ul>
                 </div>
+                <input type="hidden" id="size" value="" name="size"  required>
 				<div class="col-md-1 col-sm-1 margincolumn"></div> 
 
                 <br><br>
-                <label class="inpt" style="color: white;" >Quantity:</label><br>
-                <input type="number" class="inpt col-sm-11 col-md-11" name="quantity" min="1" value="0" style="border-radius: 3px;
+                <label for="qant" class="inpt" style="color: white;" >Quantity:</label><br>
+                <input id="qant" type="number" class="inpt col-sm-11 col-md-11 form-control" name="quantity" min="1" value="0" style="border-radius: 3px;
                 width: 100%"><br><br>
-                <input type="submit" class="inpt col-sm-11   col-md-11 btn" value="Submit">
+                <input type="submit" class="inpt col-sm-11   col-md-11 btn btn-primary" value="Submit">
                 </select>
             </form>
         </div>
