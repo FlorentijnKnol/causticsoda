@@ -67,6 +67,10 @@
             margin-bottom:0px;
             text-align: center;
         }
+        
+        .carousel-control.left, .carousel-control.right {
+        background-image: none
+    }
 
     </style>
 	
@@ -75,6 +79,14 @@
 			$("#" + x).val(y);
 			$("#" + x + "button").html(y);
 		}
+    </script><script>    
+        
+        function reqinput(classname) {
+            $(classname).map(function() {
+			if($(this).val() == ""){
+				req = false;
+				$("#error" + currentindex).text($(this).attr('id') + " is required.");
+			}
 	</script>
 </head>
 <body background="crossword.png" style="font-family:Bitter;">
@@ -83,6 +95,7 @@
 		<div class="col-md-1 col-sm-1 margincolumn"></div> 
         <div class="col-md-10 col-sm-10">
             <h4 style="color: white"><b><span class="glyphicon glyphicon-shopping-cart"></span> Order Here</b></h4><br>
+            <div id="error"></div>
             <form method="post" class="form-group" action="MS_order.php">
                 <div class="dropdown">
                     <button id="productbutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
@@ -92,7 +105,7 @@
                         <li><a style="color: #E01919;" href="#" onclick="klikinput('product','Darnil')">Darnil</a></li>
                     </ul>
                 </div>
-                <input type="hidden" id="product" value="" name="product"  required>
+                <input type="hidden" id="Product" class="hiddeninput" value="" name="product"  required>
 				
                 <div class="dropdown">
                     <button id="sizebutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
@@ -100,18 +113,15 @@
 								<span id="caret2" class="caret"></span>
 							</button>
                     <ul class="dropdown-menu">
-                        <li><a style="color: #E01919;" href="#" onclick="klikinput('size','2 liter')">2 liter</a></li>
-                        <li><a style="color: #E01919;" href="#" onclick="klikinput('size','25 kilogram')">25 kilogram</a></li>
-                        <li><a style="color: #E01919;" href="#"onclick="klikinput('size','1000 kilogram')">1000 kilogram</a></li>
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('Size','2 liter')">2 liter</a></li>
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('Size','25 kilogram')">25 kilogram</a></li>
+                        <li><a style="color: #E01919;" href="#"onclick="klikinput('Size','1000 kilogram')">1000 kilogram</a></li>
                     </ul>
                 </div>
-                <input type="hidden" id="size" value="" name="size"  required>
-				<div class="col-md-1 col-sm-1 margincolumn"></div> 
-
-                <br><br>
+                <input type="hidden" id="Size" class="hiddeninput" value="" name="size"  required>
                 <label for="qant" class="inpt" style="color: white;" >Quantity:</label><br>
                 <input id="qant" type="number" class="inpt col-sm-11 col-md-11 form-control" name="quantity" min="1" value="0" style="border-radius: 3px;width: 100%" required><br><br>
-                <input type="submit" class="inpt col-sm-11 col-md-11 btn btn-primary form-control" value="Submit">
+                <input type="submit" onclick="reqinput('hiddeninput')" class="inpt col-sm-11 col-md-11 btn btn-primary form-control" value="Submit">
                 </select>
             </form>
         </div>
@@ -133,14 +143,28 @@
     </div>
     <div class="col-md-4 col-sm-4" style="margin-top: 10%; position: relative; left: 3%">
 		<div class="col-md-1 margincolumn"></div> 
-		<div class="imagebox col-10-md">
-			<img class="mySlides" src="darnil1.jpeg" style="width:75%; height:75%">
-			<img class="mySlides" src="darnil2.jpeg" style="width:75%; height:75%">
-			<div class="col-md-8" style="padding-left: 29%; padding-top: 5%">
-				<button class="glyphicon glyphicon-chevron-left"  style=""onclick="plusDivs(-1)"></button>
-				<button class="glyphicon glyphicon-chevron-right" onclick="plusDivs(1)"></button>
-			</div>
-		</div>
+        <div id="myCarousel" class="carousel slide col-md-8" data-ride="carousel" >
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner col-10-md" role="listbox">
+                <div  class="item active">
+                    <img src="darnil1.jpeg">
+                </div>
+                <div  class="item">
+                    <img src="darnil2.jpeg">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 		<div class="col-md-1 margincolumn"></div> 
 		
     </div>
