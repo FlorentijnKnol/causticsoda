@@ -82,12 +82,13 @@
     </script><script>    
         
         function isValidForm(event) {
-            $('.hiddeninput').map(function() {
+            var req = true;
+            $('.hiddeninput').each(function() {
                 if($(this).val() == ""){
-                    return false;
+                    req = false;
 			     }
              });
-            return true;
+            return req;
             }
 	</script>
 </head>
