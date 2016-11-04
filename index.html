@@ -81,12 +81,14 @@
 		}
     </script><script>    
         
-        function reqinput(classname) {
-            $(classname).map(function() {
-			if($(this).val() == ""){
-				req = false;
-				$("#error" + currentindex).text($(this).attr('id') + " is required.");
-			}
+        function isValidForm(event) {
+            $('.hiddeninput').map(function() {
+                if($(this).val() == ""){
+                    return false;
+			     }
+             });
+            return true;
+            }
 	</script>
 </head>
 <body background="crossword.png" style="font-family:Bitter;">
@@ -96,19 +98,19 @@
         <div class="col-md-10 col-sm-10">
             <h4 style="color: white"><b><span class="glyphicon glyphicon-shopping-cart"></span> Order Here</b></h4><br>
             <div id="error"></div>
-            <form method="post" class="form-group" action="MS_order.php">
+            <form method="post" class="form-group" action="MS_order.php" onsubmit="return isValidForm(event)">
                 <div class="dropdown">
-                    <button id="productbutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
+                    <button id="Productbutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
                         Product
                     <span id="caret1" class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a style="color: #E01919;" href="#" onclick="klikinput('product','Darnil')">Darnil</a></li>
+                        <li><a style="color: #E01919;" href="#" onclick="klikinput('Product','Darnil')">Darnil</a></li>
                     </ul>
                 </div>
                 <input type="hidden" id="Product" class="hiddeninput" value="" name="product"  required>
 				
                 <div class="dropdown">
-                    <button id="sizebutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
+                    <button id="Sizebutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
 							Size
 								<span id="caret2" class="caret"></span>
 							</button>
@@ -121,7 +123,7 @@
                 <input type="hidden" id="Size" class="hiddeninput" value="" name="size"  required>
                 <label for="qant" class="inpt" style="color: white;" >Quantity:</label><br>
                 <input id="qant" type="number" class="inpt col-sm-11 col-md-11 form-control" name="quantity" min="1" value="0" style="border-radius: 3px;width: 100%" required><br><br>
-                <input type="submit" onclick="reqinput('hiddeninput')" class="inpt col-sm-11 col-md-11 btn btn-primary form-control" value="Submit">
+                <input type="submit" class="inpt col-sm-11 col-md-11 btn btn-primary form-control" value="Submit">
                 </select>
             </form>
         </div>
@@ -168,27 +170,6 @@
 		<div class="col-md-1 margincolumn"></div> 
 		
     </div>
-
-    <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex-1].style.display = "block";
-        }
-    </script>
-
 
     <!--Specifications tab-->
 

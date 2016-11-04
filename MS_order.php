@@ -132,7 +132,47 @@
 
 
     </style>
-
+<script  type="text/javascript" >
+    var req = true;
+    function nextStep(){ //wat er gebeurt als er op een knop met de class next wordt geklikt.
+        
+        req = true;
+		var classname = ".step" + currentindex;
+		$(classname).map(function() {
+			if($(this).val() == ""){
+				req = false;
+				$("#error" + currentindex).text($(this).attr('id') + " is required.");
+			}
+				
+		}
+		)
+		if(req){
+            current = $("#fieldset" + currentindex); //current wordt de div waar de next knop waar op is geklikt zich in bevindt.
+			next = current.next(); //next wordt de div onder current.
+			current.hide(); //maakt de huidige div onzichtbaar.
+			next.show(); //maakt de vorige div onzichtbaar.
+            $("#next" + currentindex).keyup("");
+            $("#error" + currentindex).html("");
+			currentindex ++;
+			$("#listitem" + currentindex).addClass("active");
+		}
+    }
+    
+    function prevStep(){ //wat er gebeurt als er op een knop met de class next wordt geklikt.
+        current = $("#fieldset" + currentindex); //current wordt de div waar de prev knop waar op is geklikt zich in bevindt.
+        prev = current.prev();  //prev wordt de div boven current.
+        current.hide(); //maakt de huidige div onzichtbaar.
+        prev.show(); //maakt de vorige div zichtbaar.
+        $("#listitem" + currentindex).removeClass("active");
+        currentindex --;
+    }
+    
+    $(document).keydown(function(e){
+        if(e.keyCode==13){
+                nextStep();
+        }
+    });
+    </script>
 </head>
 <body background="halftone.png">
 
@@ -146,25 +186,25 @@
 
 
 <!-- TO-DO HIER: Zoek een manier om de Next te stoppen wanneer niet alle required fields ingevuld zijn -->
-<form id="msform">
-    <fieldset>
+<form id="msform" onsubmit="return false;">
+    <fieldset id="fieldset1">
         <!-- Alle values zetten op de invoer van de sidebar invoer -->
         <h2 class="fs-title">Verify your order</h2>
 		<div id="error1"></div>
         <label>Product:</label>
-        <input id="Product" type="text" class="reqinput step1" name="product" value=<?php echo $_POST['product'];?>><br><br>
+        <input id="Product" type="text" class="reqinput step1" name="product" value=<?php if(isset($_POST['product'])){echo $_POST['product'];}?>><br><br>
 
         <label>Size:</label>
-        <input id="Size" type="text" class="reqinput step1" name="size" value=<?php echo $_POST['size'];?>><br><br>
+        <input id="Size" type="text" class="reqinput step1" name="size" value=<?php if(isset($_POST['size'])){echo $_POST['size'];}?>><br><br>
 
         <label>Quantity:</label>
-        <input id="Quantity" type="number" class="reqinput step1" name="quantity" value=<?php echo $_POST['quantity']?>><br><br>
+        <input id="Quantity" type="number" class="reqinput step1" name="quantity" value=<?php if(isset($_POST['quantity'])){echo $_POST['quantity'];}?>><br><br>
 
         <!-- button -->
-        <input type="button" name="correct" class="correct action-button next" value="Correct">
+        <input type="button" id="next1" name="correct" class="correct action-button next" value="Correct">
     </fieldset>
 
-    <fieldset>
+    <fieldset id="fieldset2">
         <h2 class="fs-title" style="color: #112f55;">Your delivery address</h2>
 		<div id="error2"></div>
         <label>Full name:</label>
@@ -442,23 +482,24 @@
 
         <!-- Buttons -->
         <input type="button" name="Previous" class="previous action-button" value="Previous" />
-        <input type="button" name="Next" class="next action-button" value="Next" />
+        <input type="button" id="next2" name="Next" class="next action-button" value="Next" />
 
     </fieldset>
-    <fieldset>
+    <fieldset id="fieldset3">
         <h2 class="fs-title" style="color: #112f55">Total price</h2>
             Delivery cost: Test delivery cost<!-- Hoe gaan we dit precies doen? Delivery cost uit een database halen?-->
 
         <br><br>
         <!-- Buttons -->
         <input type="button" name="Previous" class="previous action-button" value="Previous" />
-        <input type="button" name="Next" class="next action-button" value="Next" />
+        <input type="button" id="next3" name="Next" class="next action-button" value="Next" />
     </fieldset>
     <fieldset>
         <!-- Payment-->
         <h2 class="fs-title" style="color: #112f55">Payment</h2>
         <button class="col-md-1">Check out with <img src="Paypal-Logo-Transparent-png-format-large-size.png"></button>
-    </fieldset>
+        <input type="submit"></submit>
+</fieldset>
 
 </form>
 
@@ -471,34 +512,9 @@
 <script type="text/javascript">
     var currentindex = 1;//
     var next, prev, current;
-	var req = true;
-    $(".next").click(function(){ //wat er gebeurt als er op een knop met de class next wordt geklikt.
-		var classname = ".step" + currentindex;;
-		$(classname).map(function() {
-			if($(this).val() == ""){
-				req = false;
-				$("#error" + currentindex).text($(this).attr('id') + " is required.");
-			}
-				
-		}
-		)
-		if(req){
-			current = $(this).parent(); //current wordt de div waar de next knop waar op is geklikt zich in bevindt.
-			next = current.next(); //next wordt de div onder current.
-			current.hide(); //maakt de huidige div onzichtbaar.
-			next.show(); //maakt de vorige div onzichtbaar.
-			currentindex ++;
-			$("#listitem" + currentindex).addClass("active");
-		}
-    })
-    $(".previous").click(function(){ //wat er gebeurt als er op een knop met de class next wordt geklikt.
-        current = $(this).parent(); //current wordt de div waar de prev knop waar op is geklikt zich in bevindt.
-        prev = current.prev();  //prev wordt de div boven current.
-        current.hide(); //maakt de huidige div onzichtbaar.
-        prev.show(); //maakt de vorige div zichtbaar.
-        $("#listitem" + currentindex).removeClass("active");
-        currentindex --;
-    })
+
+    $(".next").click(function(){nextStep()});
+    $(".previous").click(function(){prevStep();});
 </script>
 
 </body>
