@@ -138,10 +138,11 @@
         
         req = true;
 		var classname = ".step" + currentindex;
-		$(classname).map(function() {
+		$(classname).each(function() {
 			if($(this).val() == ""){
 				req = false;
 				$("#error" + currentindex).text($(this).attr('id') + " is required.");
+                return false;
 			}
 				
 		}
