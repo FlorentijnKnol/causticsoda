@@ -187,7 +187,7 @@
 
 
 <!-- TO-DO HIER: Zoek een manier om de Next te stoppen wanneer niet alle required fields ingevuld zijn -->
-<form id="msform" onsubmit="return false;">
+<form id="msform" onsubmit="return false;" method="post" action="addorder.php">
     <fieldset id="fieldset1">
         <!-- Alle values zetten op de invoer van de sidebar invoer -->
         <h2 class="fs-title">Verify your order</h2>
@@ -493,14 +493,17 @@
         <br><br>
         <!-- Buttons -->
         <input type="button" name="Previous" class="previous action-button" value="Previous" />
-        <input type="button" id="next3" name="Next" class="next action-button" value="Next" />
+<!--        <input type="button" id="next3" name="Next" class="next action-button" value="Next" />-->
+        <input type="submit"  class="action-button" value="Next" />
     </fieldset>
+<!--
     <fieldset>
-        <!-- Payment-->
+         Payment
         <h2 class="fs-title" style="color: #112f55">Payment</h2>
         <button class="col-md-1">Check out with <img src="Paypal-Logo-Transparent-png-format-large-size.png"></button>
-        <input type="submit"></submit>
+        <input type="submit">
 </fieldset>
+-->
 
 </form>
 

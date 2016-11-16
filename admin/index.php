@@ -10,24 +10,19 @@
 	$dbuser = 'root';
 	$conn = mysqli_connect($dbhost, $dbuser);
 	mysqli_select_db($conn, 'orders');
-	if(isset($_SESSION['login'])){
+    include('orderstable.php');
+	/*if(isset($_SESSION['login'])){
+        echo "HASFJHSAKJHGLASGJ";
 		if($_SESSION['login'] == 1){
-			echo "YESS";
+			include('orderstable.php');	
+            exit();
 		}
 			else if($_SESSION['login'] == -1){
-				echo '<div id="loginscreen">
-			<form id="loginform" method="post" action="index.php">
-			<input type="text" maxlength="11" required name="username" pattern="^[A-Za-z0-9]+$">
-			<input type="text" maxlength="11" required name="password" pattern="^[A-Za-z0-9]+$">
-			<button type="submit"></form></div>';
+				echo '<div class="error">-1</div><div id="loginscreen"><div id="loginscreen">';
 		}
 			else if($_SESSION['login'] == -2){
 			echo 
-			'<div class="error">Fout wachtwoord</div><div id="loginscreen">
-			<form id="loginform" method="post" action="index.php">
-			<input type="text" maxlength="11" required name="username" pattern="^[A-Za-z0-9]+$">
-			<input type="text" maxlength="11" required name="password" pattern="^[A-Za-z0-9]+$">
-			<button type="submit"></form></div>';
+			'<div class="error">Fout wachtwoord</div><div id="loginscreen">';    
 		}
 	}
 	if(isset($_POST['username'])){
@@ -37,16 +32,20 @@
 		if($ding->fetch_assoc() > 0){
 			$_SESSION['login'] = 1;
 			include('orderstable.php');	
+            exit();
 		}
 		else{
 			$_SESSION['login'] = -2;
 			echo "<div class='alert'>Wrong login information</div>";
 			include("login.php");
+            exit();
 		}
 	}
 	else{
+        session_start();
 		$_SESSION['login'] = -1;
 		include('login.php');
-	}
+        exit();
+	}*/
 ?>	
 </html>

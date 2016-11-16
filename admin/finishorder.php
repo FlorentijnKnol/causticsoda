@@ -19,7 +19,7 @@ mysqli_query($conn, "INSERT INTO finishedorders
 					'$result[products]','$result[quantities]')");
 mysqli_query($conn, "DELETE FROM orderstable WHERE orderid =".$orderid);
 header('Location: index.php');
-end();
+exit();
 ?>	
 
 </html>
