@@ -19,7 +19,7 @@
         body{
             font-size: 15px;
         }
-        
+
         #sidebar{
             height: 100%;
             position: fixed;
@@ -31,7 +31,7 @@
             margin-right:0px;
             margin-left:0px;
         }
-        
+
         #topnav{
             margin-top: -1%;
             margin-left: 14%;
@@ -42,46 +42,60 @@
             background-color:whitesmoke;
             box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.3);
         }
-        
+
         #logo{
             margin-top: -2.5%;
         }
-        
+
 
         #caret1{border-top:6px solid #E01919; position: relative; left: 25%;}
-        #caret2{border-top:6px solid #E01919; position: relative; left: 34%;}
-		
-		.dropdown-menu{width:100%;}
-        
+        #caret2, #caret3{border-top:6px solid #E01919; position: relative; left: 34%;}
+
+        .dropdown-menu{width:100%;}
+
         .btn{
-            background-color: white; 
-            color: #1A4780; 
-            width: 100%; 
+            background-color: white;
+            color: #1A4780;
+            width: 100%;
             border-radius: 3px;
             margin-bottom:0px;
             margin-top:0px;
         }
-            
+
         .inpt{
             margin-top:5%;
             margin-bottom:0px;
             text-align: center;
         }
-        
+
         .carousel-control.left, .carousel-control.right {
-        background-image: none
-    }
+            background-image: none
+        }
+
+        p span {
+            display: block;
+            font-size: small;
+        }
+
+        #danger_text {
+
+            margin-bottom: 50px;
+        }
+        #haz_substance {
+            margin-bottom: 50px;
+        }
 
     </style>
-	
+	<script>function start(){$("#caroption").load("caroption1.html");}</script>
 	<script>
 		function klikinput(x,y){
-			$("#" + x).html(y);
-			$("#" + x + ".button").html(y);
+			$("#" + x).val(y);
+			$("#" + x + "button").html(y);
 		}
     </script><script>      
 		function klikinput2(x,y){
-			$("#" + x).html("");            
+			$("#" + x).html(""); 
+            console.log(x + " " + y);
 			$("#" + x).load(x + y + ".html");
 			$("#" + x + "button").html("Product " + y);
 		}
@@ -97,13 +111,9 @@
             return req;
             }
 	</script>
-    <script>
-        function laadDingetje(){
-            $('#caroption').load($('carousel1.html'));
-        }
-    </script>
+
 </head>
-<body background="crossword.png" style="font-family:Bitter;">
+<body background="crossword.png" style="font-family:Bitter;" onload="start()">
 <div>
     <div id="sidebar" class="col-md-2 col-sm-4 container">
 		<div class="col-md-1 col-sm-1 margincolumn"></div> 
@@ -141,8 +151,8 @@
         </div>
     </div>
     <div id="topnav" class="col-md-11 col-sm-11 jumbotron">
-        <div class="col-md-1 col-sm-1 margincolumn"></div>
-        <img id="logo" class="col-md-4 col-sm-4" src="Paypal-Logo-Transparent-png-format-large-size.png">
+        <div class="col-md-1 col-sm-1 margincolumn" style="margin-left:-50px;"></div>
+        <img id="logo" class="col-md-6 col-sm-6" style="margin-top:-100px;"src="Cs1.0.png">
     </div>
 
 </div>
@@ -158,7 +168,7 @@
         <div class="dropdown col-md-8" style="margin-bottom: 5%;">
             <button id="caroptionbutton" class="btn btn-primary dropdown-toggle inpt form-control" type="button" data-toggle="dropdown">
 				Product
-            <span id="caret2" class="caret"></span>
+            <span id="caret3" class="caret"></span>
             </button>
             <ul class="dropdown-menu">
                 <li class="dropdown-item"><a style="color: #E01919;" href="#" onclick="klikinput2('caroption','1')">Product 1</a></li>
@@ -166,7 +176,7 @@
             </ul>
         </div>
         <div class="col-md-1 margincolumn"></div> 
-        <div id="caroption"><script>$("#caroption").load("caroption1.html");</script></div>
+        <div id="caroption"></div>
 		<div class="col-md-1 margincolumn"></div> 
     </div>
 
@@ -182,15 +192,86 @@
             <li><a style="color: #1A4780" data-toggle="tab" href="#contact">Contact information</a></li>
         </ul>
 
-        <div class="tab-content" style="border: thin solid lightgrey; padding: 2%" align="center">
-            <div id="general" class="tab-pane fade in active">
-                <h3>GENERAL <span class="glyphicon glyphicon-info-sign"></span> </h3>
-                <p>This is some general information over the product.</p>
-            </div>
-            <div id="specifications" class="tab-pane fade">
-                <h3>SPECIFICATIONS <span class="glyphicon glyphicon-asterisk"></span> </h3>
-                <p>Those are some specifications over the product.</p>
-            </div>
+            <div class="tab-content" style="border: thin solid lightgrey; padding: 2%;" align="center">
+                <div id="general" class="tab-pane fade in active" style="text-align: center; color: #3565A1">
+                    <h3>GENERAL <span class="glyphicon glyphicon-info-sign"></span> </h3>
+                    <p>Granulated fast-acting unclogging agent for drains</p>
+                    <p style="margin-top: -2%">DARNIL</p>
+                    <p><span>It is used for degreasing and treating the equipment, excluding contact with foodstufs,</span>
+                        <span style="padding-right: 5%">and in other industries. It is a highly effective cleaner and degreaser for home and</span>
+                        <span style="padding-left: 1%">industrial use. Its regular use prevents sediment buildup and sewage drain choking. It is</span>
+                        <span style="padding-right: 38.5%">effective for cleaning paths, drives and brickwork.</span>
+                        <span style="padding-right: 47%">Composition: Caustic Soda 99% minimum.</span>
+                        <span>METHOD OF USE</span>
+                        <span style="font-weight: bold; padding-right: 50%">Cleaning and unblocking sewage drains.</span>
+                        <span style="padding-right: 8%">To clean drains and spouts solve 50 g of Caustic Soda in 1 litre of cold water and,</span>
+                        <span style="padding-right: 2.5%">avoid contact with eyes and skin, pour the entire solution down the drain. To unblock</span>
+                        <span>a drain solve 100 g of Caustic Soda with 1 litre of cold water, pour the solution down the</span>
+                        <span style="padding-right: 3%">drain and keep it for 10 minutes. Flush with water. If it is impossible to eliminate the</span>
+                        <span style="padding-right: 39.5%">blockage, it is necessary to seek professional help.</span>
+                        <span style="font-weight: bold; padding-right: 74.5%">General cleaning</span>
+                        <span style="padding-right: 1%">To clean paintwork resistant to alkali attack, dustbins, badly fouled areas, kennels, etc.</span>
+                        <span style="padding-right: 1.5%">solve 125 g of Caustic Soda in 5 litres of cold water, clean the surface with the solution,</span>
+                        <span style="padding-right: 43%">then wash it down thoroughly with cold water</span>
+                        <span style="font-weight: bold; padding-right: 53.5%">Cleaning paths, drives and brickwork</span>
+                        <span style="padding-right: 2%">Solve 125 g of Caustic Soda in 5 litres of cold water, pour the solution on to the area to</span>
+                        <span style="padding-left: 1.1%">be cleaned, scrub with a stiff brush, leave for 20 minutes, then wash it down thoroughly</span>
+                        <span style="padding-right: 75.1%">with cold water.</span>
+                        <span style="font-weight: bold; padding-right: 83.5%">Caution!</span>
+                        <span style="padding-right: 1%">Do not add water to Caustic Soda. Always add Caustic Soda to the water. Always reseal</span>
+                        <span style="padding-right: 1.7%">tightly after use. Keep in a dry place. Do not mix with other cleaning products. Do not</span>
+                        <span style="padding-left: 1.5%">mix with acids. Do not use in contact with aluminium. Avoid contact with varnishes and</span>
+                        <span style="padding-right: 36%">lacquered surfaces. Not to be used in drinking water.</span>
+                        <span style="font-size: smaller; padding-right: 42%">Identification Data of Chemical Product</span>
+                        <!--<img src="IMG_83122.png" style="width: 50%; height: 50%; position: relative; right: 21%">-->
+                            <p id="danger_text" style="position: relative; left: 29%; font-size: small">Danger</p>
+                            <p id="haz_substance" style="position: relative; left: 29%; font-size: small">Highly hazardous caustic substance</p>
+
+                </div>
+                <div id="specifications" class="tab-pane fade">
+                    <h3>SPECIFICATIONS <span class="glyphicon glyphicon-asterisk"></span> </h3>
+                    <p>Produced in comply with following standards:<br>
+
+                        ISO 9001:2008<br>
+
+                        (Certified by SGS / Certificate No. HU14/7339)
+                        <br>
+                        ISO 22000:2005
+                        <br>
+                        (Certified by SGS / Certificate No. CH10/0091)
+                        <br>
+                        RF Standard TY 9199-044-00203275-2009 – Food additive E524 production standard
+                        <br>
+                        Certified by RF Sanitary authorities / Certificate No. RU.34.12.01.009.E.000018.04.11
+                        <br>
+                        STO 00203275-206-2007
+                        <br>
+                        (Internal standard of Kaustik JSC)
+                        <br>
+                        REACH Registration number:
+                        <br>
+                        01-2119457892-27-0023
+                        <br>
+                        Chemicals formula : NaOH
+                        <br>
+                        Molecular mass : 40,00
+                        <br>
+                        Description:
+                        <br>
+                        Spherical or semi-spherical white pearls, slight color is admissible.
+                        <br>
+                        Gran size:
+                        <br>
+                        Diameter > 2,5 mm– 17%
+                        <br>
+                        Diameter 2-2,5 mm – 35%
+                        <br>
+                        Diameter 1,6-2 mm – 30%
+                        <br>
+                        Diameter 0,8-1,6 mm – 17,99%
+                        <br>
+                        Diameter (dust) <0,8 mm –0,01%</p>
+                </div>
             <div id="hazard" class="tab-pane fade">
                 <h3>HAZARD INFORMATION <span class="glyphicon glyphicon-alert"></span></h3>
                 <p>This is some hazard information over the product</p>
@@ -205,9 +286,8 @@
             </div>
 
         </div>
-    </div>
-    <script type="text/javascript">
-    </script>
+        </div>
 </div>
+
 </body>
 </html>
